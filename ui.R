@@ -26,14 +26,14 @@ shinyUI(navbarPage("Analisis de Dataset",
                    #################################################################################                   
                    ###                           Component 2                                     ###
                    #################################################################################                   
-                   tabPanel("Component 2",
-                            selectInput("dataset", "Choose a dataset:", 
-                                        choices = c("fuzzy/","crisp/")
-                                        ),
-                            mainPanel(
-                              plotOutput('plot1')
-                            )
-                            ),
+                  # tabPanel("Component 2",
+                           # selectInput("dataset", "Choose a dataset:", 
+                            #            choices = c("fuzzy/","crisp/")
+                            #            ),
+                   #         mainPanel(
+                             # plotOutput('plot1')
+                    #        )
+                     #       ),
                    navbarMenu("More",
                               tabPanel("Sub-Component A"),
                               tabPanel("Sub-Component B"))
