@@ -13,15 +13,20 @@ shinyUI(navbarPage("Analisis de Dataset",
                    #################################################################################                   
                    tabPanel("Dataset_Bank",headerPanel('Histogram of dataset'),
                             sidebarPanel(
-                              selectInput("Graf_Bank", "Choose:", 
-                                          choices = c("Histograma","blo")),
-                              selectInput("Feature", "Choose:", 
+                              selectInput("Feature", "Choose for histogram:", 
+                                          choices = c(names(bank))),
+                              selectInput("Feature2", "Choose for plot:", 
                                           choices = c(names(bank)))
                             ),
                             mainPanel(
-                              plotOutput('plot1')
-                            )
-                   ),
+                               tabsetPanel(
+                                  tabPanel("Histogram", plotOutput("Histogram")), 
+#                                 tabPanel("boxplot", tableOutput("table")),
+                                  tabPanel("Summary", verbatimTextOutput("summary")),
+                                  tabPanel("Table", tableOutput("Table"))
+                                  )
+                          )
+                  ) # ),
                    
                    #################################################################################                   
                    ###                           Component 2                                     ###
@@ -34,7 +39,7 @@ shinyUI(navbarPage("Analisis de Dataset",
                              # plotOutput('plot1')
                     #        )
                      #       ),
-                   navbarMenu("More",
-                              tabPanel("Sub-Component A"),
-                              tabPanel("Sub-Component B"))
+#                    navbarMenu("More",
+#                               tabPanel("Sub-Component A"),
+#                               tabPanel("Sub-Component B"))
 ))
