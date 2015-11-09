@@ -19,8 +19,7 @@ shinyServer(function(input, output, session) {
   output$Histogram <- renderPlot({
     # if(input$Graf_Bank=="Histograma"){
       # ggplot(bank, aes_string(x=input$Feature)) + geom_histogram()
-    print (str(selectedData()))
-      ggplot(selectedData(), aes(x=feature, fill = Feature)) +geom_density(alpha = 0.8)
+    ggplot(selectedData(), aes(x=feature, fill = Feature)) +geom_density(alpha = 0.8)
 #     }else{
 #       ggplot(bank,aes_string(x=1, y=input$Feature)) + 
 #         geom_boxplot(aes_string(fill=1)) +
@@ -37,7 +36,15 @@ shinyServer(function(input, output, session) {
   })
   # Generate a summary of the data
   output$summary <- renderPrint({
-    summary(selectedData())
+    tipos<-unique(selectedData()[["Feature"]])
+    if (length(tipos)==1) {
+      s<-data.frame(rbind(c(name=input$Feature,summary(selectedData()[selectedData()[["Feature"]]==tipos[1],2]))))
+    }else{
+      s<-data.frame(cbind(name=c(input$Feature,input$Feature2),rbind(summary(selectedData()[selectedData()[["Feature"]]==tipos[1],2]),
+                                                     summary(selectedData()[selectedData()[["Feature"]]==tipos[2],2]))))
+    }
+ 
+    s
   })
 #   
   # Generate an HTML table view of the data
