@@ -11,7 +11,7 @@ shinyUI(navbarPage("Analisis de Dataset",
                    ################################################################################# 
                    ###                           Component 1                                     ###
                    #################################################################################                   
-                   tabPanel("Dataset_Bank",headerPanel('Histogram of dataset'),
+                   tabPanel("Dataset_Bank",headerPanel('Dataset Bank'),
                             sidebarPanel(
                               selectInput("Feature", "feature one:", 
                                           choices = c(names(bank))),
@@ -31,12 +31,20 @@ shinyUI(navbarPage("Analisis de Dataset",
                    #################################################################################                   
                    ###                           Component 2                                     ###
                    #################################################################################                   
-                  tabPanel("Component 2",
-                           selectInput("dataset", "Choose a dataset:", 
-                                       choices = c("fuzzy/","crisp/")
-                                       ),
+                  tabPanel("Dataset",
+                           sidebarPanel(
+                             selectInput("Feature", "feature one:", 
+                                         choices = c(names(datos))),
+                             selectInput("Feature2", "Feature second:", 
+                                         choices = c(names(bank)))
+                           ),
                            mainPanel(
-                             plotOutput('plot1')
+                             tabsetPanel(
+                               tabPanel("Histogram", plotOutput("Histogram")), 
+                               tabPanel("boxplot", tableOutput("table")),
+                               tabPanel("Summary", verbatimTextOutput("summary")),
+                               tabPanel("Table", tableOutput("Table"))
+                             )
                            )
                            ),
                    navbarMenu("More",
