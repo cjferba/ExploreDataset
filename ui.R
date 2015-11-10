@@ -4,7 +4,7 @@ library(ggplot2)
 #data<-read.csv("Data/FitnessDeepLearning.csv")
 bank<-read.csv(paste("Data/fuzzy/bank.csv"))
 #german<-read.csv(paste("Data/fuzzy/german.csv"))
-#forest_equidepth<-read.csv(paste("Data/fuzzy/forest-equidepth.csv"))
+forest_equidepth<-read.csv(paste("Data/fuzzy/forest-equidepth.csv"))
 #bank<-read.csv(paste("Data/fuzzy/bank.csv"))
 
 shinyUI(navbarPage("Analisis de Dataset",
@@ -34,16 +34,16 @@ shinyUI(navbarPage("Analisis de Dataset",
                   tabPanel("Dataset",
                            sidebarPanel(
                              selectInput("Feature", "feature one:", 
-                                         choices = c(names(datos))),
+                                         choices = c(names(forest_equidepth))),
                              selectInput("Feature2", "Feature second:", 
-                                         choices = c(names(bank)))
+                                         choices = c(names(forest_equidepth)))
                            ),
                            mainPanel(
                              tabsetPanel(
-                               tabPanel("Histogram", plotOutput("Histogram")), 
-                               tabPanel("boxplot", tableOutput("table")),
-                               tabPanel("Summary", verbatimTextOutput("summary")),
-                               tabPanel("Table", tableOutput("Table"))
+                               tabPanel("Histogram_forest_equidepth", plotOutput("Histogram_2")), 
+                               tabPanel("boxplot", tableOutput("table_2")),
+                               tabPanel("Summary", verbatimTextOutput("summary_2")),
+                               tabPanel("Table", tableOutput("Table_2"))
                              )
                            )
                            ),
