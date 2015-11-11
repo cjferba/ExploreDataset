@@ -2,9 +2,14 @@ library(shiny)
 library(ggplot2)
 
 #data<-read.csv("Data/FitnessDeepLearning.csv")
-bank<-read.csv(paste("Data/fuzzy/bank.csv"))
+if(!("bank" %in% ls())){
+  bank<-read.csv(paste("Data/fuzzy/bank.csv"))
+}
+if(!("forest_equidepth" %in% ls())){
+  forest_equidepth<-read.csv(paste("Data/fuzzy/forest-equidepth.csv"))
+}
+#if(!("bank" %in% ls())){}
 #german<-read.csv(paste("Data/fuzzy/german.csv"))
-forest_equidepth<-read.csv(paste("Data/fuzzy/forest-equidepth.csv"))
 #bank<-read.csv(paste("Data/fuzzy/bank.csv"))
 
 shinyUI(navbarPage("Analisis de Dataset",
@@ -31,41 +36,41 @@ shinyUI(navbarPage("Analisis de Dataset",
                    #################################################################################                   
                    ###                           Component 2                                     ###
                    #################################################################################                   
-                  tabPanel("Dataset forest_equidepth",
-                           sidebarPanel(
-                             selectInput("Feature_fe", "feature one:", 
-                                         choices = c(names(forest_equidepth))),
-                             selectInput("Feature2__fe", "Feature second:", 
-                                         choices = c(names(forest_equidepth)))
-                           ),
-                           mainPanel(
-                             tabsetPanel(
-                               tabPanel("Histogram", plotOutput("Histogram_2")), 
-                               tabPanel("boxplot", tableOutput("table_2")),
-                               tabPanel("Summary", verbatimTextOutput("summary_2")),
-                               tabPanel("Table", tableOutput("Table_2"))
-                             )
-                           )
-                           ),
+#                   tabPanel("Dataset forest_equidepth",
+#                            sidebarPanel(
+#                              selectInput("Feature_fe", "feature one:", 
+#                                          choices = c(names(forest_equidepth))),
+#                              selectInput("Feature2__fe", "Feature second:", 
+#                                          choices = c(names(forest_equidepth)))
+#                            ),
+#                            mainPanel(
+#                              tabsetPanel(
+#                                tabPanel("Histogram1", plotOutput("Histogram_2")), 
+#                                tabPanel("boxplot1", tableOutput("table_2")),
+#                                tabPanel("Summary1", verbatimTextOutput("summary_2")),
+#                                tabPanel("Table1", tableOutput("Table_2"))
+#                              )
+#                            )
+#                            ),
                   #################################################################################                   
                   ###                           Component 3                                     ###
                   #################################################################################                   
-                  tabPanel("Dataset German",
-                           sidebarPanel(
-                             selectInput("Feature_Ge", "feature one:", 
-                                         choices = c(names(forest_equidepth))),
-                             selectInput("Feature2__Ge", "Feature second:", 
-                                         choices = c(names(forest_equidepth)))
-                           ),
-                           mainPanel(
-                             tabsetPanel(
-                               tabPanel("Histogram", plotOutput("Histogram_2")), 
-                               tabPanel("boxplot", tableOutput("table_2")),
-                               tabPanel("Summary", verbatimTextOutput("summary_2")),
-                               tabPanel("Table", tableOutput("Table_2"))
-                             )
-                           )
-                  ),
+#                   tabPanel("Dataset German",
+#                            sidebarPanel(
+#                              selectInput("Feature_Ge", "feature one:", 
+#                                          choices = c(names(forest_equidepth))),
+#                              selectInput("Feature2__Ge", "Feature second:", 
+#                                          choices = c(names(forest_equidepth)))
+#                            ),
+#                            mainPanel(
+#                              tabsetPanel(
+#                                tabPanel("Histogram2", plotOutput("Histogram_2")), 
+#                                tabPanel("boxplot2", tableOutput("table_2")),
+#                                tabPanel("Summary2", verbatimTextOutput("summary_2")),
+#                                tabPanel("Table2", tableOutput("Table_2"))
+#                              )
+#                            )
+#                   ),
                    navbarMenu("More",
                               tabPanel("Sub-Component A"),
                               tabPanel("Sub-Component B"))
