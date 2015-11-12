@@ -3,6 +3,9 @@ library(ggplot2)
 
 shinyServer(function(input, output, session) {
   
+  
+  
+  
   # Combine the selected variables into a new data frame
   selectedData <- reactive({
     
@@ -16,6 +19,12 @@ shinyServer(function(input, output, session) {
 #     
 #     list(datos_bank,datos_bank)
   })
+  
+  output$information <- renderPrint({
+    "Seleccione un conjunto de datos"
+  })
+  
+  
   ################################################################################# 
   ###                           Component 1                                     ###
   #################################################################################                   

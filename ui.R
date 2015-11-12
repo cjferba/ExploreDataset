@@ -16,7 +16,9 @@ shinyUI(navbarPage("Analisis de Dataset",
                    ################################################################################# 
                    ###                           Component 1                                     ###
                    #################################################################################                   
-                   tabPanel("Dataset_Bank",headerPanel('Dataset Bank'),
+                   tabPanel("Summary", verbatimTextOutput("Information"),),
+                   navbarMenu("Fuzzy",
+                            tabPanel("Dataset_Bank",headerPanel('Dataset Bank'),
                             sidebarPanel(
                               selectInput("Feature", "feature one:", 
                                           choices = c(names(bank))),
@@ -31,7 +33,7 @@ shinyUI(navbarPage("Analisis de Dataset",
                                   tabPanel("Table", tableOutput("Table"))
                                   )
                           )
-                    ),
+                    )),
                    
                    #################################################################################                   
                    ###                           Component 2                                     ###
@@ -71,7 +73,7 @@ shinyUI(navbarPage("Analisis de Dataset",
 #                              )
 #                            )
 #                   ),
-                   navbarMenu("More",
+                   navbarMenu("Crisp",
                               tabPanel("Sub-Component A"),
                               tabPanel("Sub-Component B"))
 ))
